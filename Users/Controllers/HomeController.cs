@@ -9,10 +9,10 @@ namespace Users.Controllers
     public class HomeController : Controller
     {
         // GET: Home
+        [Authorize]
         public ActionResult Index()
         {
-            var data = new Dictionary<string, object>();
-            data.Add("Placeholder", "Placeholder");
+            var data = new Dictionary<string, object> {{"Placeholder", "Placeholder"}};
             return View(data);
         }
     }
