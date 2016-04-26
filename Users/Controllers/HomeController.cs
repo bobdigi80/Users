@@ -44,8 +44,9 @@ namespace Users.Controllers
         [HttpPost]
         public async Task<ActionResult> UserProps(Cities city)
         {
-            AppUser user = CurrentUser;
+            var user = CurrentUser;
             user.City = city;
+            user.SetCountryFromCity(city);
             await UserManager.UpdateAsync(user);
             return View(user);
         }
