@@ -17,6 +17,11 @@ namespace Users
     {
         public void Configuration(IAppBuilder app)
         {
+            ConfigureAuth(app);
+        }
+        
+        public void ConfigureAuth(IAppBuilder app)
+        {
             // Configure the db context and user manager to use a single instance per request
             app.CreatePerOwinContext(AppIdentityDbContext.Create);
             app.CreatePerOwinContext<AppUserManager>(AppUserManager.Create);
@@ -53,8 +58,8 @@ namespace Users
             //   appSecret: "");
 
             app.UseGoogleAuthentication(
-                    clientId: "000-000.apps.googleusercontent.com",
-                    clientSecret: "00000000000");
+                    clientId: "937466987837-aeq7uhh39bc37hmh26rupke01tf2fk68.apps.googleusercontent.com",
+                    clientSecret: "7wHvwzN_vv2rATVY9BBc2cJ3");
         }
     }
 }
