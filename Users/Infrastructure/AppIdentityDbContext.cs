@@ -1,6 +1,7 @@
 ﻿using System.Data.Entity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Users.Models;
+using Microsoft.AspNet.Identity;
 
 namespace Users.Infrastructure
 {
@@ -8,7 +9,7 @@ namespace Users.Infrastructure
         public AppIdentityDbContext() : base("IdentityDb") { }
        
         static AppIdentityDbContext() {
-            Database.SetInitializer<AppIdentityDbContext>(new IdentityDbInit());
+            Database.SetInitializer(new IdentityDbInit());
         }
 
         public static AppIdentityDbContext Create() {
@@ -16,16 +17,7 @@ namespace Users.Infrastructure
         }
     }
 
-    public class IdentityDbInit: DropCreateDatabaseIfModelChanges<AppIdentityDbContext>
+    public class IdentityDbInit : NullDatabaseInitializer<AppIdentityDbContext>
     {
-        protected override void Seed(AppIdentityDbContext context)
-        {
-            PerformInitialSetup(context);
-            base.Seed(context);
-        }
-        public void PerformInitialSetup(AppIdentityDbContext context)
-        {
-            // initial configuration will go here
-        }
     }
 }
